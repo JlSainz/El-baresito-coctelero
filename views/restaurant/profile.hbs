@@ -1,0 +1,60 @@
+<style>
+  body {
+    overflow: auto
+  }
+</style>
+
+
+<div class="container-profile">
+  <div class="column">
+    <img class="profile-img" src={{users.photo}} alt="Profile picture">
+    <h5>{{users.username}}</h5>
+    <h5>{{users.email}}</h5>
+    <a href="/auth/logout">Logout</a>
+    <a href="/view">Home</a>
+    <a href="/info">Info</a>
+  </div>
+  {{#each reservation}}
+  <form action="/edit/{{this._id}}" class="reservas" method="POST">
+    <h3>Edit your reservation</h3>
+    <input type="number" value="{{this.people}}" placeholder="Amount of people" name="people" min="1" max="10" required>
+    <input autocomplete="false" value="{{this.reservation_cuisine}}" list="experiences"
+      placeholder="Choose your experience" name="reservation_cuisine" required>
+    <datalist id="experiences">
+      <option value="Japanese">
+      <option value="Arabic">
+      <option value="Lebanese">
+      <option value="Indian">
+      <option value="Peruvian">
+    </datalist>
+    <label for="date">Date</label>
+    <input type="date" id="date" name="reservation_date" value="{{this.reservation_date}}" min="2019-09-27"
+      max="2021-12-31" required>
+    <label for="reservation_hour">Reservation time</label>
+    <input type="time" id="reservation_hour" value="{{this.reservation_hour}}" name="reservation_hour" min="09:00"
+      max="23:00" required>
+    <input type="hidden" name="table">
+    <input type="submit" value="Edit meal">
+    <p class="final-prices"></p>
+    <div id="cocktails" style="display:none">{{this.cocktail}}</div>
+    <a href="/profile-delete/{{this._id}}">Delete</a>
+  </form>
+
+  {{/each}}
+  <div id="prices" style="display:none">{{prices}}</div>
+
+</div>
+
+<script>
+  var final = document.querySelectorAll(".final-prices")
+  let separar = prices.innerHTML.split(",")
+
+  console.log(cocktails)
+  for (var i = 0; i < final.length; i++) {
+    priceC = cocktails[i].innerHTML.split(",")
+    priceC = priceC.length * 30
+
+
+    final[i].innerHTML = `${+separar[i] + priceC} $`
+  }
+</script>

@@ -1,0 +1,56 @@
+<nav class="nav-bar">
+  <a href="/profile">Profile</a>
+  <a href="/auth/logout">Logout</a>
+  <a href="/auth/admin">Admin</a>
+</nav>
+
+
+<div class="container-view">
+  <div class="table" id="one">
+    <img src="./images/Untitled-2.png" alt="table1">
+  </div>
+  <div class="table" id="two">
+    <img src="./images/Untitled-2.png" alt="table2">
+  </div>
+  <div class="table" id="three">
+    <img src="./images/Untitled-2.png" alt="table3">
+  </div>
+  <div class="table" id="four">
+    <img src="./images/Untitled-2.png" alt="table4">
+  </div>
+  <div class="table" id="five">
+    <img src="./images/Untitled-2.png" alt="table5">
+  </div>
+  <div class="table" id="six">
+    <img src="./images/Untitled-2.png" alt="table6">
+  </div>
+</div>
+
+<div class="filter"></div>
+
+<div class="img-big">
+  <img src="./images/Untitled-2.png" alt="tableBig">
+</div>
+
+
+<form action="/createReservation" class="view-form" method="POST">
+  <h3>Make your reservation</h3>
+  <input type="number" placeholder="Amount of people" name="people" min="1" max="10" required>
+  <input autocomplete="false" list="experiences" placeholder="Choose your experience" name="reservation_cuisine"
+    required>
+  <datalist id="experiences">
+    <option value="Japanese">
+    <option value="Arabic">
+    <option value="Lebanese">
+    <option value="Indian">
+    <option value="Peruvian">
+  </datalist>
+  <label for="date">Date</label>
+  <input type="date" id="date" name="reservation_date" value="" min="2019-09-27" max="2021-12-31" required>
+  <label for="reservation_hour">Reservation time</label>
+  <input type="time" id="reservation_hour" name="reservation_hour" min="12:00" max="22:30" required>
+  <input type="hidden" name="table">
+  <input type="submit" value="Reservation">
+</form>
+
+<script src="/javascripts/script.js"></script>
